@@ -1,6 +1,6 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # TC: ????
+        # TC: O(n log n), SC: O(n)
         track = {}
         for num in nums:
             if num in track:
