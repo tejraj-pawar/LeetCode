@@ -21,6 +21,7 @@ class Solution {
     }
     */
 
+    /*
     public List<Integer> findAnagrams(String s, String p) {
         int sLen = s.length();
         int pLen = p.length();
@@ -57,5 +58,39 @@ class Solution {
 
         return res;
     }
+    */
+
+    public List<Integer> findAnagrams(String s, String p) {
+        int sLen = s.length();
+        int pLen = p.length();
+
+        if(sLen < pLen) return new ArrayList<>();
+        
+        List<Integer> res = new ArrayList<>();
+
+        int[] sFreq = new int[26];
+        int[] pFreq = new int[26];
+
+        for(int i=0; i<pLen; i++) {
+            pFreq[p.charAt(i) - 'a']++;
+            sFreq[s.charAt(i) - 'a']++;
+        }
+
+        if(Arrays.equals(sFreq, pFreq)) res.add(0);
+
+        for(int i=pLen; i<sLen; i++) {
+            sFreq[s.charAt(i) - 'a']++;
+            sFreq[s.charAt(i-pLen) - 'a']--;
+
+            if(Arrays.equals(sFreq, pFreq)) res.add(i - pLen + 1);
+        }
+
+        return res;
+
+
+
+    }
+
+
 
 }
