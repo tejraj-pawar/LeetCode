@@ -33,6 +33,7 @@ class Solution {
         HashMap<Character, Integer> sMap = new HashMap<>();
         HashMap<Character, Integer> pMap = new HashMap<>(); 
 
+        //First window
         for(int i=0; i<pLen; i++) {
             pMap.put(p.charAt(i), pMap.getOrDefault(p.charAt(i), 0) + 1);
             sMap.put(s.charAt(i), sMap.getOrDefault(s.charAt(i), 0) + 1);
@@ -40,6 +41,7 @@ class Solution {
 
         if(sMap.equals(pMap)) res.add(0);
 
+        //Slide window till last
         for(int i=pLen; i<sLen; i++) {
             //Add new window element(front)
             sMap.put(s.charAt(i), sMap.getOrDefault(s.charAt(i), 0) + 1);
@@ -54,7 +56,6 @@ class Solution {
         }
 
         return res;
-
     }
 
 }
