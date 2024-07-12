@@ -7,12 +7,14 @@ class Solution {
         Set<Integer> window = new HashSet<>();
 
         while(right < nums.length) {
+            // Diff between left and right pointer denotes window size, if window size > k, shrink it.
             if(right - left > k) {
                 window.remove(nums[left]);
                 left++;
             }
             if(window.contains(nums[right])) 
                 return true;
+            
             window.add(nums[right]);
             right++;
         }
